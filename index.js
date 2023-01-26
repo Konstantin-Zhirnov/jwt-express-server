@@ -18,17 +18,9 @@ app.use(errorMiddleware);
 const start = async () => {
   try {
     mongoose.set('strictQuery', true);
-    await mongoose
-      .connect(process.env.DB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    })
-      .then(() => {
-        console.log('Connected to DB!');
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    await mongoose.connect(process.env.DATABASE_URI, () => {
+      console.log("Mongo connected");
+    });
 
     app.listen(PORT, () => console.log(`Server started on PORT = ${PORT}`));
   } catch (e) {
