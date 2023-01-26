@@ -1,7 +1,7 @@
 const Router = require('express').Router;
 const userController = require('../controllers/user-controller');
 const router = new Router();
-const {body} = require('express-validator');
+const { body } = require('express-validator');
 const authMiddleware = require('../middleware/auth-middleware');
 
 router.get('/activate/:link', userController.activate);
