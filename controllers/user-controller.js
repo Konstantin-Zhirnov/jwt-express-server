@@ -74,7 +74,7 @@ class UserController {
   async getUser(req, res, next) {
     try {
       const { email } = req.body;
-      const users = await userService.getUser(email);
+      const user = await userService.getUser(email);
       return res.json(user);
     } catch (e) {
       next(e);
