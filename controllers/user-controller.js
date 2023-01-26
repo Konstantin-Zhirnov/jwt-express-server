@@ -70,6 +70,14 @@ class UserController {
       next(e);
     }
   }
+
+  async getUser(req, res, next) {
+    try {
+      return res.json({user: 'qwertt'});
+    } catch (e) {
+      next(e);
+    }
+  }
 }
 
 module.exports = new UserController();
