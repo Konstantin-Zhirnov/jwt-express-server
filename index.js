@@ -18,6 +18,7 @@ app.use(cors({
 app.use('/api', router);
 app.use(errorMiddleware);
 
+
 const start = async () => {
   try {
     mongoose.set('strictQuery', true);
