@@ -14,7 +14,7 @@ app.use(cookieParser());
 
 const whitelist = ['http://localhost:3000', 'https://mellifluous-lily-395be2.netlify.app/'];
 const corsOptions = {
-  credentials: true, // This is important.
+  credentials: true,
   origin: (origin, callback) => {
     if(whitelist.includes(origin))
       return callback(null, true)
@@ -22,8 +22,6 @@ const corsOptions = {
   }
 }
 app.use(cors(corsOptions));
-
-
 
 app.use('/api', router);
 app.use(errorMiddleware);

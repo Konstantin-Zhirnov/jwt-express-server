@@ -43,12 +43,9 @@ class UserController {
 
   async activate(req, res, next) {
     try {
-      console.log('req', req)
-      console.log('req.params', req.params)
       const activationLink = req.params.link;
-      console.log('activationLink', activationLink)
       await userService.activate(activationLink);
-      return res.redirect("https://mellifluous-lily-395be2.netlify.app/");
+      return res.redirect('https://vercel.com/');
     } catch (e) {
       next(e);
     }
