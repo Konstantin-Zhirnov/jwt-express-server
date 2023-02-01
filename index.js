@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
   credentials: true,
-  origins: ['http://localhost:300', 'https://mellifluous-lily-395be2.netlify.app/']
+  origins: ['localhost:300', 'https://mellifluous-lily-395be2.netlify.app/']
 }));
 app.use('/api', router);
 app.use(errorMiddleware);
