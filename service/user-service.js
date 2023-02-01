@@ -32,6 +32,7 @@ class UserService {
     }
     user.isActivated = true;
     await user.save();
+    return user
   }
 
   async login(email, password) {
