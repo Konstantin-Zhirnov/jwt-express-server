@@ -11,20 +11,17 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+
+const whitelist = ['http://localhost:3000', 'https://mellifluous-lily-395be2.netlify.app/'];
 const corsOptions = {
-  origin(origin, callback) {
-    callback(null, true);
-  },
-  credentials: true
-};
-app.use(cors(corsOptions));
-const allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,token');
-  next();
+  credentials: true, // This is important.
+  origin: (origin, callback) => {
+    if(whitelist.includes(origin))
+      return callback(null, true)
+    callback(new Error('Not allowed by CORS'));
+  }
 }
-app.use(allowCrossDomain);
+app.use(cors(corsOptions));
 
 
 
