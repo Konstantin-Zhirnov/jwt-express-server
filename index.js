@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-const whitelist = ['http://localhost:3000', 'https://mellifluous-lily-395be2.netlify.app/'];
+const whitelist = ['https://mellifluous-lily-395be2.netlify.app/', 'http://localhost:3000', ];
 const corsOptions = {
   credentials: true,
   origin: (origin, callback) => {
