@@ -16,7 +16,7 @@ class UserService {
     const hashPassword = await bcrypt.hash(password, 3);
     const activationLink = uuid.v4();
     const user = await UserModel.create({email, password: hashPassword, activationLink, name});
-    await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
+    await mailService.sendActivationMail(email, `${process.env.CLIENT_URL}/${activationLink}`);
 
     const userDTO = new UserDTO(user);
     const tokens = tokenService.generateTokens({...userDTO});
@@ -25,8 +25,9 @@ class UserService {
     return { ...tokens, user: userDTO }
   }
 
-  async activate(link) {
-    const user = await UserModel.findOne({link});
+  async activate(activationLink) {
+    const user = await UserModel.findOne({activationLink});
+    console.log('user', user)
     if (!user) {
       throw ApiError.BadRequest('Bad activation link');
     }

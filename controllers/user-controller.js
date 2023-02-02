@@ -43,9 +43,10 @@ class UserController {
 
   async activate(req, res, next) {
     try {
-      const activationLink = req.params.link;
-      await userService.activate(activationLink);
-      return res.redirect('https://vercel.com/');
+      const {link} = req.body;
+      console.log('link', link)
+      const userData = await userService.activate(link);
+      return res.json(userData);
     } catch (e) {
       next(e);
     }
