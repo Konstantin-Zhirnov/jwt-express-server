@@ -9,7 +9,7 @@ const errorMiddleware = require('./middleware/error-middleware');
 const PORT = process.env.PORT || 80;
 const app = express()
 app.use(express.json());
-app.use('/api', router);
+
 app.use(cookieParser());
 
 const corsOptions = {
